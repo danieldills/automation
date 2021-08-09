@@ -1,17 +1,14 @@
 import time
 import re
 
-# Reading Opened File
-with open("assets/potential-contacts.txt", "r") as file:
-  contact_data = file.read()
-
-with open('assets/potential-contacts.txt', 'r') as fr, open ('new_email.txt', 'w') as fw:
-    for paragraph in fr:
+# opens file, reads file, then writes file to new .txt file
+with open('assets/potential-contacts.txt', 'r') as file_read, open ('new_email.txt', 'w') as file_write:
+    for paragraph in file_read:
         email_lst = re.findall('\S+@\S+', paragraph)
         for email in email_lst:
-            fw.write(email + '\n')
+            file_write.write(email + '\n')
 
-with open('raw/new_email.txt','r') as f:                                                                                                                                                                                                                                                 
+with open('new_email.txt','r') as f:                                                                                                                                                                                                                                                 
     distinct_content=set(f.readlines())                                                                                                                                                                                                                                                   
 
 to_file=""                                                                                                                                                                                                                                                                       
